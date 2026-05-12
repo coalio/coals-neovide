@@ -20,7 +20,7 @@ The Neovim config is NvChad-based and is tracked as a submodule instead of copie
 Core experience:
 
 - NvChad `v2.5` base with the `material-deep-ocean` theme.
-- Neovide-specific GUI tuning: `Hack Nerd Font Mono:h12`, synced titlebar colors, remembered window size, round corner preference, faster cursor animation, `F11` fullscreen, and zoom controls on `Ctrl++`, `Ctrl+-`, and `Ctrl+0`.
+- Neovide-specific GUI tuning: `Hack Nerd Font Mono:h12`, `0.9` startup scale, synced titlebar colors, remembered window size, round corner preference, faster cursor animation, `F11` fullscreen, and zoom controls on `Ctrl++`, `Ctrl+-`, and `Ctrl+0`.
 - Alpha dashboard with new-file, recent-projects, Browse, quit, and recent-workspace entries.
 - Session restoration with `persistence.nvim`; opening without args restores the last session, and opening a directory loads that workspace's session when available.
 - NvimTree root handling that follows selected workspaces without forcing root changes during normal editing.
