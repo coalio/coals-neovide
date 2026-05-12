@@ -1,0 +1,3 @@
+# Frameless Neovide window on Windows.
+# Use PowerToys Grab And Move for modifier-drag moving/resizing.
+frame = "none"
