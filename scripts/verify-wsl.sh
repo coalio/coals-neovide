@@ -9,6 +9,16 @@ echo "Runtime:"
 nvim --clean --headless '+lua print(vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch)' '+qa'
 
 echo
+echo "Neovim config:"
+if git -C "$HOME/.config/nvim" remote get-url origin >/dev/null 2>&1; then
+  git -C "$HOME/.config/nvim" remote get-url origin
+  git -C "$HOME/.config/nvim" rev-parse --short HEAD
+else
+  echo "$HOME/.config/nvim is not a git checkout"
+  exit 1
+fi
+
+echo
 echo "Node:"
 if command -v node >/dev/null 2>&1; then
   command -v node

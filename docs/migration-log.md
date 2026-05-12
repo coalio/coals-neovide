@@ -13,7 +13,11 @@ This is the concrete work that was required to migrate the setup from the Ubuntu
 
 ## WSL Neovim
 
-- Copied `~/.config/nvim` from the mounted Ubuntu distro.
+- Replaced the copied `~/.config/nvim` snapshot with a Git submodule for:
+  `https://github.com/coalio/nvim-config`
+- The WSL installer clones that repository into:
+  `~/.config/nvim`
+- The clone is reset to the submodule-pinned commit recorded by this setup repo.
 - Installed the source distro's Neovim binary:
   `/mnt/wsl/ubuntu22-v/usr/local/bin/nvim`
 - Matched local version:

@@ -1,0 +1,3 @@
+[submodule "assets/wsl/nvim-config"]
+	path = assets/wsl/nvim-config
+	url = https://github.com/coalio/nvim-config

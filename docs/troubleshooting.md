@@ -28,6 +28,27 @@ sudo rm -rf /usr/local/share/nvim
 sudo cp -a assets/wsl/nvim/share/nvim /usr/local/share/nvim
 ```
 
+## Neovim Config Is Missing Or Not A Git Checkout
+
+The installer expects `~/.config/nvim` to be a clone of:
+
+```text
+https://github.com/coalio/nvim-config
+```
+
+Fix:
+
+```bash
+bash scripts/install-wsl.sh
+```
+
+Or manually:
+
+```bash
+rm -rf ~/.config/nvim
+git clone https://github.com/coalio/nvim-config ~/.config/nvim
+```
+
 ## Coc Says `node` Is Not Executable
 
 Symptom:
