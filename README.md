@@ -1,9 +1,5 @@
 # Coal's Neovide + WSL Neovim Setup
 
-Reproducible Windows Neovide + WSL Neovim setup migrated from the Ubuntu distro that was stored on the `V:` partition.
-
-The goal of this repo is to keep the binaries, launchers, fonts, config pointers, install scripts, and gotchas in one place so the setup can be reproduced on another Windows machine without rediscovering every dependency.
-
 ## What This Installs
 
 - Windows Neovide `0.15.2`.
