@@ -41,7 +41,6 @@ echo
 echo "Fonts:"
 if command -v fc-match >/dev/null 2>&1; then
   fc-match 'Hack Nerd Font Mono'
-  fc-match 'BitstromWera Nerd Font Mono'
 else
   echo "fc-match not found"
 fi

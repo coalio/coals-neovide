@@ -162,6 +162,12 @@ From Windows PowerShell:
 powershell -ExecutionPolicy Bypass -File .\scripts\verify-windows.ps1
 ```
 
+If Windows or Neovide reports that `Hack Nerd Font Mono` is missing after a reboot or Windows update:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\repair-windows-fonts.ps1 -ConfigureWindowsTerminal
+```
+
 ## Installed Paths
 
 Windows:
@@ -191,4 +197,4 @@ WSL:
 - Existing files are backed up before replacement under `~/coals-neovide-backups` in WSL and `%USERPROFILE%\coals-neovide-backups` on Windows.
 - The checksum file covers files owned by this repository. The Neovim config submodule is pinned by Git rather than by `checksums/SHA256SUMS`.
 
-See [docs/migration-log.md](docs/migration-log.md), [docs/dependencies.md](docs/dependencies.md), and [docs/troubleshooting.md](docs/troubleshooting.md) for details.
+See [TROUBLESHOOTING.md](TROUBLESHOOTING.md), [docs/migration-log.md](docs/migration-log.md), [docs/dependencies.md](docs/dependencies.md), and [docs/troubleshooting.md](docs/troubleshooting.md) for details.

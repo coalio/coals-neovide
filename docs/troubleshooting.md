@@ -103,6 +103,12 @@ The launcher remains available at:
 
 ## Font Looks Wrong
 
+For Windows/Neovide `Hack Nerd Font Mono` missing errors, use the full root guide:
+
+```text
+TROUBLESHOOTING.md
+```
+
 Verify Windows font files:
 
 ```powershell

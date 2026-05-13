@@ -67,33 +67,9 @@ Copy-DirectoryFresh -Source (Join-Path $assets "neovide-config\Local") -Destinat
 Copy-DirectoryFresh -Source (Join-Path $assets "neovide-config\Roaming") -Destination (Join-Path $env:APPDATA "neovide")
 
 if (-not $SkipFonts) {
-    $fontSource = Join-Path $assets "fonts"
-    $fontDest = Join-Path $env:LOCALAPPDATA "Microsoft\Windows\Fonts"
-    $fontReg = "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"
-
-    New-Item -ItemType Directory -Force -Path $fontDest | Out-Null
-    New-Item -Path $fontReg -Force | Out-Null
-
-    if (-not ("Win32.NativeMethods" -as [type])) {
-        Add-Type -Namespace Win32 -Name NativeMethods -MemberDefinition @'
-[System.Runtime.InteropServices.DllImport("gdi32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
-public static extern int AddFontResourceW(string lpFileName);
-[System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
-public static extern System.IntPtr SendMessageTimeout(System.IntPtr hWnd, int Msg, System.UIntPtr wParam, string lParam, int flags, int timeout, out System.UIntPtr result);
-'@
-    }
-
-    Get-ChildItem -LiteralPath $fontSource -File | Where-Object { $_.Extension -in @(".ttf", ".otf") } | ForEach-Object {
-        $destFile = Join-Path $fontDest $_.Name
-        Copy-Item -LiteralPath $_.FullName -Destination $destFile -Force
-        $type = if ($_.Extension -ieq ".otf") { "OpenType" } else { "TrueType" }
-        $valueName = "$($_.BaseName) ($type)"
-        New-ItemProperty -Path $fontReg -Name $valueName -Value $destFile -PropertyType String -Force | Out-Null
-        [void][Win32.NativeMethods]::AddFontResourceW($destFile)
-    }
-
-    $result = [UIntPtr]::Zero
-    [void][Win32.NativeMethods]::SendMessageTimeout([IntPtr]0xffff, 0x001D, [UIntPtr]::Zero, $null, 2, 1000, [ref]$result)
+    & (Join-Path $scriptDir "repair-windows-fonts.ps1") `
+        -FontSource (Join-Path $assets "fonts") `
+        -ConfigureWindowsTerminal
 }
 
 $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
